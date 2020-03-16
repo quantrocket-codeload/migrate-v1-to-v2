@@ -769,7 +769,7 @@ INSERT OR IGNORE INTO LatestPosition (
 SELECT 
     t.Account,
     t.DatetimeCreated,
-    t.Id,
+    REPLACE(t.Id, t.ConId, COALESCE(s.Sid, i.Sid)),
     t.OrderRef,
     t.Quantity,
     COALESCE(s.Sid, i.Sid)
